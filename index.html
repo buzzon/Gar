@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Gar event</title>
+</head>
+    <main>
+      <div id="slider">
+
+        <div class="slider-inner">
+          <div id="slider-content">
+            <div class="meta">Описание</div>
+            <h2 id="slide-title" data-bind="text: title"></h2>
+            <div id="slide-description" data-bind="foreach: m_.equipment">
+              <div data-bind="text: object.title + ' ('+ count + ' шт.)'"></div>
+              <div data-bind="text: object.description"></div>
+            </div>
+            <div class="meta">Цена</div>
+            <div id="slide-status" data-bind="text: price() +' ₽'"></div>
+            <div id="slide-prices" data-bind="foreach: m_.aditional">
+              <label class="lock">
+                <input type="checkbox" data-bind="event:{ change: m_.priceChanged}">
+                <span data-bind="text: title + ' ' + price + ' ₽'"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div id="pagination" data-bind="foreach: new Array(pages)">
+           <button data-bind='class: m_.getPageClass($index()), click:() => {m_.setActive($index())}'></button>
+        </div>
+    </main>
+  </body>
+            <!-- <button class="active"></button> -->
+
+  <script type='text/javascript' src='knockout-3.5.1.js'></script>
+  <script src="script.js"></script>
+</html>
+
+
